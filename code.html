@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>codes</title>
+    <style>
+        body {
+            background-image: url("img2.jpg");
+            background-size: cover;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Single Layer Perceptron for AND Gate & OR Gate</h1>
+    <h2>Code</h2>
+    <pre><code>
+import numpy as np
+
+def step_function(x):
+    return 1 if x >= 0 else 0
+
+def perceptron(inputs, weights, bias):
+    weighted_sum = np.dot(inputs, weights) + bias
+    return step_function(weighted_sum)
+
+def and_gate(x1, x2):
+    weights = np.array([1, 1])
+    bias = -1.5
+    inputs = np.array([x1, x2])
+    return perceptron(inputs, weights, bias)
+
+def or_gate(x1, x2):
+    weights = np.array([1, 1])
+    bias = -0.5
+    inputs = np.array([x1, x2])
+    return perceptron(inputs, weights, bias)
+
+if __name__ == "__main__":
+    print("Testing AND Gate:")
+    print("0 AND 0 =", and_gate(0, 0))
+    print("0 AND 1 =", and_gate(0, 1))
+    print("1 AND 0 =", and_gate(1, 0))
+    print("1 AND 1 =", and_gate(1, 1))
+
+    print("\nTesting OR Gate:")
+    print("0 OR 0 =", or_gate(0, 0))
+    print("0 OR 1 =", or_gate(0, 1))
+    print("1 OR 0 =", or_gate(1, 0))
+    print("1 OR 1 =", or_gate(1, 1))
+    </code></pre>
+
+    <h2>NOT Gate</h2>
+    <pre><code>
+import numpy as np
+
+inputs = [0, 1]
+weights_not = np.array([-1])
+bias_not = 0.5
+
+def step_function(x):
+    return 1 if x >= 0 else 0
+
+print("Testing NOT Gate:")
+for x1 in inputs:
+    weighted_sum_not = np.dot([x1], weights_not) + bias_not
+    output_not = step_function(weighted_sum_not)
+    print(f"NOT {x1} = {output_not}")
+    </code></pre>
+
+    <h2>Sequential Model</h2>
+    <pre><code>
+import numpy as np
+from keras.models import Sequential
+from keras.layers import Dense
+
+X_and = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y_and = np.array([[0], [0], [0], [1]])
+
+X_or = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y_or = np.array([[0], [1], [1], [1]])
+
+def create_model():
+    model = Sequential()
+    model.add(Dense(1, input_dim=2, activation='sigmoid'))  
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+    return model
+
+model_and = create_model()
+model_and.fit(X_and, y_and, epochs=100, verbose=0)
+
+model_or = create_model()
+model_or.fit(X_or, y_or, epochs=100, verbose=0)
+
+print("AND Gate Predictions:")
+print(model_and.predict(X_and))
+
+print("\nOR Gate Predictions:")
+print(model_or.predict(X_or))
+    </code></pre>
+
+    <h2>Gates Program</h2>
+    <pre><code>
+import numpy as np
+from keras.models import Sequential
+from keras.layers import Dense
+
+X_and = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y_and = np.array([[0], [0], [0], [1]])
+
+X_or = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y_or = np.array([[0], [1], [1], [1]])
+
+model_and = Sequential()
+model_and.add(Dense(1, input_dim=2, activation='sigmoid'))  
+model_and.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+model_and.fit(X_and, y_and, epochs=100, verbose=0)
+
+model_or = Sequential()
+model_or.add(Dense(1, input_dim=2, activation='sigmoid'))  
+model_or.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+model_or.fit(X_or, y_or, epochs=100, verbose=0)
+
+user_input = input("Enter two binary values (0 or 1) separated by a space: ")
+x_input = list(map(int, user_input.split()))
+x_input = np.array(x_input).reshape(1, -1)
+
+and_prediction = model_and.predict(x_input)
+or_prediction = model_or.predict(x_input)
+
+print(f"\nUser Input: {x_input.flatten()}")
+print(f"AND Gate Prediction: {and_prediction[0][0]:.4f} (Threshold: 0.5 -> Output: {int(and_prediction[0][0] >= 0.5)})")
+print(f"OR Gate Prediction: {or_prediction[0][0]:.4f} (Threshold: 0.5 -> Output: {int(or_prediction[0][0] >= 0.5)})")
+    </code></pre>
+
+    <h2>MNIST</h2>
+    <pre><code>
+import tensorflow as tf
+import tensorflow_datasets as tfds
+
+# i) Load data
+(train_ds, val_ds, test_ds), info = tfds.load(
+    'mnist',
+    split=['train[10000:]', 'train[:10000]', 'test'],
+    shuffle_files=True,
+    as_supervised=True,
+    with_info=True,
+)
+
+# ii) Batch training data
+batch_size = 32 # You can adjust this
+
+# iii) Initialize optimization variables
+epochs = 10
+learning_rate = 0.001
+
+# iv) Normalize images
+def normalize_img(image, label):
+  """Normalizes images: `uint8` -> `float32`."""
+  return tf.cast(image, tf.float32) / 255., label
+
+train_ds = train_ds.map(normalize_img, num_parallel_calls=tf.data.AUTOTUNE)
+train_ds = train_ds.batch(batch_size).prefetch(tf.data.AUTOTUNE)
+
+val_ds = val_ds.map(normalize_img, num_parallel_calls=tf.data.AUTOTUNE)
+val_ds = val_ds.batch(batch_size).prefetch(tf.data.AUTOTUNE)
+
+test_ds = test_ds.map(normalize_img, num_parallel_calls=tf.data.AUTOTUNE)
+test_ds = test_ds.batch(batch_size).prefetch(tf.data.AUTOTUNE)
+
+# v) Declare weights
+num_input_features = 784  # 28x28
+num_hidden_units = 128
+num_output_units = 10
+
+W1 = tf.Variable(tf.random.normal([num_input_features, num_hidden_units]))
+b1 = tf.Variable(tf.zeros([num_hidden_units]))
+W2 = tf.Variable(tf.random.normal([num_hidden_units, num_output_units]))
+b2 = tf.Variable(tf.zeros([num_output_units]))
+
+# vi) Network computations
+def model(x):
+    """Defines the neural network model."""
+    layer_1 = tf.nn.sigmoid(tf.matmul(x, W1) + b1)
+    out = tf.matmul(layer_1, W2) + b2
+    return out
+
+# vii) Loss function
+def loss(logits, labels):
+    """Defines the cross-entropy loss function."""
+    return tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(
+        logits=logits, labels=labels))
+
+# viii) Adam optimizer
+optimizer = tf.optimizers.Adam(learning_rate)
+
+# ix) Training loop and evaluation
+for epoch in range(epochs):
+    for images, labels in train_ds:
+        # Reshape images
+        images = tf.reshape(images, [-1, num_input_features])
+
+        with tf.GradientTape() as tape:
+            # Forward pass
+            logits = model(images)
+            loss_value = loss(logits, labels)
+
+        # Backpropagation
+        gradients = tape.gradient(loss_value, [W1, b1, W2, b2])
+        optimizer.apply_gradients(zip(gradients, [W1, b1, W2, b2]))
+
+    print(f"Epoch {epoch+1}, Loss: {loss_value.numpy()}")
+
+# Evaluate accuracy on the test set
+correct_predictions = 0
+total_samples = 0
+for images, labels in test_ds:
+    images = tf.reshape(images, [-1, num_input_features])
+    logits = model(images)
+    predictions = tf.argmax(logits, axis=1)
+    correct_predictions += tf.reduce_sum(tf.cast(predictions == labels, tf.int32)).numpy()
+    total_samples += labels.shape[0]
+
+accuracy = correct_predictions / total_samples
+print(f"Test Accuracy: {accuracy}")
+    </code></pre>
+</body>
+</html>

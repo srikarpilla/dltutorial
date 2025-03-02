@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(44, 114, 144);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .main {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #box {
+            width: 40%;
+            height: 400px;
+            box-shadow: 0px 0px 5px gray;
+            background-color: bisque;
+            border-radius: 5px;
+            padding: 15px;
+        }
+
+        .row {
+            width: 100%;
+            margin: 2rem;
+            margin-left: 0;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 5px;
+            font-size: 20px;
+            border-radius: 5px;
+            border: none;
+            color: bisque;
+            cursor: pointer;
+            background-color: cadetblue;
+        }
+
+        .btn:hover {
+            background-color: blue;
+            color: brown;
+        }
+
+        @media all and (max-width: 700px) {
+            #quesBox {
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .row > label {
+                font-size: 12px;
+            }
+            #box {
+                width: 70%;
+                height: 350px;
+            }
+        }
+
+        @media all and (max-width: 350px) {
+            #box {
+                width: 80%;
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <div id="box">
+            <h2 id="quesBox">1) Sample Question</h2>
+            <div class="row">
+                <input class="options" id="option1" type="radio" value="a" name="option">
+                <label for="option1"> Option 1</label>
+            </div>
+            <div class="row">
+                <input class="options" id="option2" type="radio" value="b" name="option">
+                <label for="option2"> Option 2</label>
+            </div>
+            <div class="row">
+                <input class="options" id="option3" type="radio" value="c" name="option">
+                <label for="option3"> Option 3</label>
+            </div>
+            <div class="row">
+                <input class="options" id="option4" type="radio" value="d" name="option">
+                <label for="option4"> Option 4</label>
+            </div>
+            <button class="btn" onclick="submitQuiz()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+       const questions = [
+    {
+        'que': 'What is the main goal of deep learning?',
+        'a': 'Unsupervised learning',
+        'b': 'Feature extraction',
+        'c': 'Training neural networks to learn from data and make predictions',
+        'd': 'Reinforcement learning',
+        'correct': 'c'
+    },
+    {
+        'que': 'Which type of neural network architecture is primarily used for image processing tasks?',
+        'a': 'Recurrent Neural Networks (RNNs)',
+        'b': 'Convolutional Neural Networks (CNNs)',
+        'c': 'Deep Belief Networks (DBNs)',
+        'd': 'Autoencoders',
+        'correct': 'b'
+    },
+    {
+        'que': 'What is backpropagation in the context of deep learning?',
+        'a': 'A phenomenon where gradients become too large during training',
+        'b': 'A problem caused by a small learning rate',
+        'c': 'A method for adjusting model weights to minimize loss',
+        'd': 'A challenge in parallelizing deep learning algorithms',
+        'correct': 'c'
+    },
+    {
+        'que': 'Which deep learning architecture is well-suited for processing sequential data like natural language?',
+        'a': 'CNN',
+        'b': 'RNN',
+        'c': 'LSTM',
+        'd': 'GAN',
+        'correct': 'b'
+    },
+    {
+        'que': "What is the purpose of dropout in deep neural networks?",
+        "a": "Reducing the number of neurons in the network",
+        "b": "Removing outliers from the training data",
+        "c": "Preventing overfitting by randomly deactivating neurons during training",
+        "d": "Simplifying the architecture of the network",
+        "correct": "c"
+    },
+    {
+        'que': 'What is the role of activation functions in neural networks?',
+        'a': 'To reduce the dimensionality of input data',
+        'b': 'To introduce non-linearity into the model',
+        'c': 'To normalize the output of the network',
+        'd': 'To increase the number of layers in the network',
+        'correct': 'b'
+    },
+    {
+        'que': 'Which type of deep learning model is used for generating new data samples?',
+        'a': 'Generative Adversarial Networks (GANs)',
+        'b': 'Variational Autoencoders (VAEs)',
+        'c': 'Recurrent Neural Networks (RNNs)',
+        'd': 'Convolutional Neural Networks (CNNs)',
+        'correct': 'a'
+    },
+    {
+        'que': 'What is the purpose of batch normalization in deep learning?',
+        'a': 'To normalize the input data before training',
+        'b': 'To reduce overfitting by adding noise to the input',
+        'c': 'To stabilize the training process by normalizing activations',
+        'd': 'To increase the learning rate during training',
+        'correct': 'c'
+    },
+    {
+        'que': 'Which deep learning technique involves training a model on a large dataset and then fine-tuning it on a smaller dataset?',
+        'a': 'Transfer learning',
+        'b': 'Ensemble learning',
+        'c': 'Reinforcement learning',
+        'd': 'Unsupervised learning',
+        'correct': 'a'
+    },
+    {
+        'que': 'What is the term for a situation where a model performs well on the training data but poorly on new data?',
+        'a': 'Overfitting',
+        'b': 'Underfitting',
+        'c': 'Regularization',
+        'd': 'Bias-variance tradeoff',
+        'correct': 'a'
+    }
+];
+
+        let index = 0;
+        let total = questions.length;
+        let right = 0, wrong = 0;
+        const quesBox = document.getElementById("quesBox");
+        const optionInputs = document.querySelectorAll('.options');
+
+        const loadQuestion = () => {
+            if (index === total) {
+                return endQuiz();
+            }
+            reset();
+
+            const data = questions[index];
+            quesBox.innerHTML = `${index + 1}) ${data.que}`;
+            optionInputs[0].nextElementSibling.innerText = data.a;
+            optionInputs[1].nextElementSibling.innerText = data.b;
+            optionInputs[2].nextElementSibling.innerText = data.c;
+            optionInputs[3].nextElementSibling.innerText = data.d;
+        };
+
+        const submitQuiz = () => {
+            const data = questions[index];
+            const ans = getAnswer();
+
+            if (ans === data.correct) {
+                right++;
+            } else {
+                wrong++;
+            }
+            index++;
+            loadQuestion();
+            return;
+        };
+
+        const getAnswer = () => {
+            let answer;
+            optionInputs.forEach((input) => {
+                if (input.checked) {
+                    answer = input.value;
+                }
+            });
+            return answer;
+        };
+
+        const reset = () => {
+            optionInputs.forEach((input) => {
+                input.checked = false;
+            });
+        };
+
+        const endQuiz = () => {
+            document.getElementById("box").innerHTML = `
+                <h3>Thank you for Playing the Quiz</h3>
+                <h2> ${right} out of ${total} are correct</h2>
+            `;
+        };
+
+        // Initial Call
+        loadQuestion();
+    </script>
+</body>
+</html>

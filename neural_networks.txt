@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Networks - Deep Learning Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="resources.php">Resources</a></li>
+                <li><a href="neural_networks.php">Neural Networks</a></li>
+                <li><a href="machine_learning.php">Machine Learning</a></li>
+                <li><a href="reinforcement_learning.php">Reinforcement Learning</a></li>
+                <li><a href="contact.php">Contact Us</a></li>
+                <li><a href="feedback.php">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Neural Networks</h1>
+        <p>Neural networks are a subset of machine learning algorithms modeled after the human brain. They consist of interconnected nodes (neurons) that work together to process data and make predictions.</p>
+
+        <!-- Additional content can be added here -->
+        <h2>Types of Neural Networks:</h2>
+        <ul>
+            <li>Feedforward Neural Networks (FNN)</li>
+            <li>Convolutional Neural Networks (CNN)</li>
+            <li>Recurrent Neural Networks (RNN)</li>
+            <!-- Add more types as needed -->
+        </ul>
+
+        <!-- You can also add links to resources or PDFs -->
+        <!-- Example: -->
+        <!-- 
+        <h2>Resources:</h2> 
+        <ul> 
+            <li><a href="#">Resource 1 Link</a></li> 
+            ...
+        </ul> 
+        -->
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Deep Learning Tutorial</p>
+    </footer>
+
+    <!-- Reuse the same JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
+

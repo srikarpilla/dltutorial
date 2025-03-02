@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative; /* Add this */
+}
+
+.menu-icon {
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    position: absolute; /* Add this */
+    left: 20px; /* Position at the left */
+    top: 20px; /* Adjust vertical position */
+}
+
+.menu-content {
+    display: none;
+    background-color: #333;
+    padding: 20px;
+    position: absolute; /* Add this */
+    left: 0; /* Align with the left edge */
+    top: 60px; /* Position below the menu icon */
+    width: 200px; /* Set width for the menu */
+}
+
+.menu-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-content li {
+    padding: 10px;
+    border-bottom: 1px solid #444;
+}
+
+.menu-content a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu-content.show {
+    display: block;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    clear: both;
+}

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Networks - Deep Learning Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+
+    <main>
+        <h1>Neural Networks</h1>
+        <p>Neural networks are machine learning models that mimic the complex functions of the human brain. These models consist of interconnected nodes or neurons that process data, learn patterns, and enable tasks such as pattern recognition and decision-making.</p>
+
+        <section id="understanding-nn">
+            <h2>Understanding Neural Networks</h2>
+            <p>Neural networks are capable of learning and identifying patterns directly from data without pre-defined rules. These networks are built from several key components:</p>
+            <ul>
+                <li><strong>Neurons:</strong> The basic units that receive inputs, each neuron is governed by a threshold and an activation function.</li>
+                <li><strong>Connections:</strong> Links between neurons that carry information, regulated by weights and biases.</li>
+                <li><strong>Weights and Biases:</strong> These parameters determine the strength and influence of connections.</li>
+                <li><strong>Propagation Functions:</strong> Mechanisms that help process and transfer data across layers of neurons.</li>
+                <li><strong>Learning Rule:</strong> The method that adjusts weights and biases over time to improve accuracy.</li>
+            </ul>
+            <p>Learning in neural networks follows a structured, three-stage process:</p>
+            <ol>
+                <li>Input Computation: Data is fed into the network.</li>
+                <li>Output Generation: Based on the current parameters, the network generates an output.</li>
+                <li>Iterative Refinement: The network refines its output by adjusting weights and biases, gradually improving its performance on diverse tasks.</li>
+            </ol>
+            <p>In an adaptive learning environment, the neural network is exposed to a simulated scenario or dataset, and parameters such as weights and biases are updated in response to new data or conditions. With each adjustment, the network’s response evolves, allowing it to adapt effectively to different tasks or environments.</p>
+            
+            <img src="Artificial_neuron_structure.svg.png" alt="Biological vs Artificial Neuron" style="width:50%;">
+            <p style="font-style: italic; text-align: center;">Analogy between a biological neuron and an artificial neuron.</p>
+        </section>
+
+        <section id="importance-nn">
+            <h2>Importance of Neural Networks</h2>
+            <p>Neural networks are pivotal in identifying complex patterns, solving intricate challenges, and adapting to dynamic environments. Their ability to learn from vast amounts of data is transformative, impacting technologies like natural language processing, self-driving vehicles, and automated decision-making.</p>
+            <p>Neural networks streamline processes, increase efficiency, and support decision-making across various industries. As a backbone of artificial intelligence, they continue to drive innovation, shaping the future of technology.</p>
+        </section>
+
+        <section id="evolution-nn">
+            <h2>Evolution of Neural Networks</h2>
+            <p>Neural networks have undergone significant evolution since their inception in the mid-20th century:</p>
+            <ul>
+                <li><strong>1940s-1950s:</strong> McCulloch and Pitts introduced the first mathematical model for artificial neurons.</li>
+                <li><strong>1960s-1970s:</strong> Frank Rosenblatt's work on perceptrons, simple single-layer networks.</li>
+                <li><strong>1980s:</strong> Development of backpropagation by Rumelhart, Hinton, and Williams.</li>
+                <li><strong>1990s:</strong> Surge in popularity, followed by the "AI winter."</li>
+                <li><strong>2000s:</strong> Resurgence with larger datasets and advances in computational power.</li>
+                <li><strong>2010s-Present:</strong> Domination by deep learning models like CNNs and RNNs.</li>
+            </ul>
+        </section>
+
+        <section id="layers-nn">
+            <h2>Layers in Neural Network Architecture</h2>
+            <ul>
+                <li><strong>Input Layer:</strong> Receives input data.</li>
+                <li><strong>Hidden Layers:</strong> Perform computational heavy lifting.</li>
+                <li><strong>Output Layer:</strong> Produces the output of the model.</li>
+            </ul>
+        </section>
+
+        <section id="working-nn">
+            <h2>Working of Neural Networks</h2>
+            <section id="forward-propagation">
+                <h3>Forward Propagation</h3>
+                <p>When data is input into the network, it passes through the network in the forward direction. This process involves:</p>
+                <ol>
+                    <li><strong>Linear Transformation:</strong> Each neuron receives inputs, which are multiplied by weights, summed, and a bias is added: \( z = w_1x_1 + w_2x_2 + ... + w_nx_n + b \)</li>
+                    <li><strong>Activation:</strong> The result is passed through an activation function (e.g., ReLU, sigmoid, tanh).</li>
+                </ol>
+            </section>
+
+            <section id="backpropagation">
+                <h3>Backpropagation</h3>
+                <p>After forward propagation, the network evaluates its performance and minimizes the loss. This involves:</p>
+                <ol>
+                    <li>Loss Calculation: The network calculates the loss.</li>
+                    <li>Gradient Calculation: The network computes the gradients of the loss function.</li>
+                    <li>Weight Update: Weights and biases are updated using an optimization algorithm.</li>
+                </ol>
+            </section>
+
+            <section id="iteration">
+                <h3>Iteration</h3>
+                <p>The process of forward propagation, loss calculation, backpropagation, and weight update is repeated for many iterations.</p>
+            </section>
+        </section>
+
+        <section id="email-classification">
+            <h2>Example of Email Classification</h2>
+            <p>Let’s consider a record of an email dataset:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Email ID</th>
+                        <th>Email Content</th>
+                        <th>Sender</th>
+                        <th>Subject Line</th>
+                        <th>Label</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>“Get free gift cards now!”</td>
+                        <td>spam@example.com</td>
+                        <td>“Exclusive Offer”</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Feature vector based on the analysis of keywords such as “free,” “win,” and “offer.”</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Email ID</th>
+                        <th>Email Content</th>
+                        <th>Sender</th>
+                        <th>Subject Line</th>
+                        <th>Feature Vector</th>
+                        <th>Label</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>“Get free gift cards now!”</td>
+                        <td>spam@example.com</td>
+                        <td>“Exclusive Offer”</td>
+                        <td>[1, 0, 1]</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Working:</strong></p>
+            <ol>
+                <li><strong>Input Layer:</strong> 3 nodes indicate the presence of each keyword.</li>
+                <li><strong>Hidden Layer:</strong>
+                    <ul>
+                        <li>Weighted Sum: Calculation for Neuron H1: \( (1 \times 0.5) + (0 \times -0.2) + (1 \times 0.3) = 0.8 \)</li>
+                        <li>Weighted Sum: Calculation for Neuron H2: \( (1 \times 0.4) + (0 \times 0.1) + (1 \times -0.5) = -0.1 \)</li>
+                        <li>Activation Function (ReLU): \( ReLU(0.8) = 0.8 \), \( ReLU(-0.1) = 0 \)</li>
+                    </ul>
+                </li>
+                <li><strong>Output Layer:</strong>
+                    <ul>
+                        <li>Input: \( (0.8 \times 0.7) + (0 \times 0.2) = 0.56 \)</li>
+                        <li>Final Activation (Sigmoid): \( \sigma(0.56) \approx 0.636 \)</li>
+                    </ul>
+                </li>
+                <li><strong>Final Classification:</strong>
+                    The output value of approximately 0.636 indicates the probability of the email being spam. Since this value is greater than 0.5, the neural network classifies the email as spam (1).
+                </li>
+            </ol>
+            <img src="images/email-classification-nn.png" alt="Neural Network for Email Classification" style="width:50%;">
+            <p style="font-style: italic; text-align: center;">Neural Network for Email Classification Example</p>
+        </section>
+
+        <section id="learning-nn">
+            <h2>Learning of a Neural Network</h2>
+            <ul>
+                <li><strong>Supervised Learning:</strong> Learning from labeled input-output pairs.</li>
+                <li><strong>Unsupervised Learning:</strong> Learning without labeled output variables.</li>
+                <li><strong>Reinforcement Learning:</strong> Learning through interaction with its environment.</li>
+            </ul>
+        </section>
+
+        <section id="types-nn">
+            <h2>Types of Neural Networks</h2>
+            <ul>
+                <li>Feedforward Networks (FNN)</li>
+                <li>Multilayer Perceptron (MLP)</li>
+                <li>Convolutional Neural Networks (CNN)</li>
+                <li>Recurrent Neural Network (RNN)</li>
+                <li>Long Short-Term Memory (LSTM)</li>
+            </ul>
+        </section>
+
+        <section id="implementation-nn">
+            <h2>Implementation of Neural Network using TensorFlow</h2>
+            <p>Here, we implement a simple feedforward neural network that trains on a sample dataset and makes predictions.</p>
+            <ol>
+                <li>Import Necessary Libraries</li>
+                <li>Create and Load Dataset</li>
+                <li>Create a Neural Network</li>
+                <li>Compile the Model</li>
+                <li>Train the Model</li>
+                <li>Make Predictions</li>
+            </ol>
+            <pre>
+                <code>
+import numpy as np
+import pandas as pd
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+# Sample dataset (binary classification)
+data = {
+    'feature1': [0.1, 0.2, 0.3, 0.4, 0.5],
+    'feature2': [0.5, 0.4, 0.3, 0.2, 0.1],
+    'label': [0, 0, 1, 1, 1]  # Binary labels
+}
+
+# Convert to DataFrame
+df = pd.DataFrame(data)
+
+# Features (X) and Labels (y)
+X = df[['feature1', 'feature2']].values  # Input features
+y = df['label'].values  # Output labels
+
+# Create a Sequential model
+model = Sequential()
+
+# Add input layer and hidden layer
+model.add(Dense(8, input_dim=2, activation='relu'))  # 2 input features, 8 neurons in hidden layer
+
+# Add output layer
+model.add(Dense(1, activation='sigmoid'))  # Output layer for binary classification
+
+# Compile the model
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+# Train the model
+model.fit(X, y, epochs=100, batch_size=1, verbose
+                </code>
+            </pre>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Deep Learning Tutorial</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

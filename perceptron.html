@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perceptrons in Artificial Intelligence</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        h2 {
+            color: #6c757d;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Perceptrons in Artificial Intelligence</h1>
+
+    <div class="section">
+        <h2>What is a Perceptron?</h2>
+        
+    <img src="reinforcemet.png" alt="Reinforcement Learning" width="300">
+        <p>A Perceptron is an artificial neuron and the simplest form of a neural network. It was invented by Frank Rosenblatt in 1957 and is used for supervised learning of binary classifiers. The Perceptron algorithm is a fundamental building block in machine learning and artificial intelligence, simulating the function of biological neurons to process and make decisions based on input data.</p>
+    </div>
+
+    <div class="section">
+        <h2>Components of a Perceptron</h2>
+        <ul>
+            <li><b>Inputs (Nodes)</b>: These are the values received by the Perceptron, typically binary (0 or 1).</li>
+            <li><b>Weights</b>: These represent the importance of each input, influencing the output decision.</li>
+            <li><b>Threshold Value</b>: The minimum value required for the Perceptron to activate and produce an output.</li>
+            <li><b>Activation Function</b>: A step function that determines whether the Perceptron should fire based on the weighted sum of inputs.</li>
+        </ul>
+
+
+
+        <title>Perceptron Criteria Table</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+            th {
+                background-color: #f0f0f0;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <h1>Perceptron Criteria Table</h1>
+    
+        <table>
+            <tr>
+                <th>Criteria</th>
+                <th>Input</th>
+                <th>Weight</th>
+            </tr>
+            <tr>
+                <td>Artists is Good</td>
+                <td>x1 = 0 or 1</td>
+                <td>w1 = 0.7</td>
+            </tr>
+            <tr>
+                <td>Weather is Good</td>
+                <td>x2 = 0 or 1</td>
+                <td>w2 = 0.6</td>
+            </tr>
+            <tr>
+                <td>Friend will Come</td>
+                <td>x3 = 0 or 1</td>
+                <td>w3 = 0.5</td>
+            </tr>
+            <tr>
+                <td>Food is Served</td>
+                <td>x4 = 0 or 1</td>
+                <td>w4 = 0.3</td>
+            </tr>
+            <tr>
+                <td>Alcohol is Served</td>
+                <td>x5 = 0 or 1</td>
+                <td>w5 = 0.4</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>How Does a Perceptron Work?</h2>
+        <p>A Perceptron works by multiplying each input by its corresponding weight, summing these values, and applying an activation function to determine the output. If the weighted sum exceeds the threshold, the Perceptron outputs 1; otherwise, it outputs 0. This process allows the Perceptron to classify inputs into two categories.</p>
+        <p>For example, consider a Perceptron deciding whether to attend a concert based on factors like the artist's quality, weather, and availability of food. Each factor is assigned a weight, and if the weighted sum exceeds the threshold, the Perceptron outputs 1 (attend the concert).</p>
+    
+    
+      <h2>  1. Perceptron Inputs</h2>
+        <p>A perceptron receives one or more input.
+        
+        Perceptron inputs are called nodes.
+        
+        The nodes have both a value and a weight.</p>
+        
+        <h2>2. Node Values (Input Values)</h2>
+        <p>Input nodes have a binary value of 1 or 0.
+        
+        This can be interpreted as true or false / yes or no.
+        
+        The values are: 1, 0, 1, 0, 1</p>
+        
+        <h2>3. Node Weights</h2>
+       <p> Weights are values assigned to each input.
+        
+        Weights shows the strength of each node.
+        
+        A higher value means that the input has a stronger influence on the output.
+        
+        The weights are: 0.7, 0.6, 0.5, 0.3, 0.4</p>
+        
+        <h2>4. Summation</h2>
+       <p> The perceptron calculates the weighted sum of its inputs.
+        
+        It multiplies each input by its corresponding weight and sums up the results.
+        
+        The sum is: 0.7*1 + 0.6*0 + 0.5*1 + 0.3*0 + 0.4*1 = 1.6</p>
+        
+       <h2> 6. The Threshold</h2>
+        <p>The Threshold is the value needed for the perceptron to fire (outputs 1), otherwise it remains inactive (outputs 0).
+        
+        In the example, the treshold value is: 1.5</p>
+        
+       <h2> 5. The Activation Function</h2>
+        After the summation, the perceptron applies the activation function.
+        
+        The purpose is to introduce non-linearity into the output. It determines whether the perceptron should fire or not based on the aggregated input.
+        
+        The activation function is simple: (sum > treshold) == (1.6 > 1.5)
+        
+        
+    
+    
+    </div>
+
+    <div class="section">
+        <h2>Perceptron Learning</h2>
+        <p>Perceptrons learn through a training process where they adjust their weights based on errors between predicted and desired outputs. This learning process enables Perceptrons to make accurate predictions for new inputs.</p>
+    </div>
+
+    <div class="section">
+        <h2>Limitations and Future Developments</h2>
+        <p>While Perceptrons are limited to learning linearly separable patterns, they form the basis for more complex neural networks. By stacking multiple Perceptrons in layers and incorporating non-linear activation functions, neural networks can learn complex patterns and perform tasks like image recognition and natural language processing.</p>
+    </div>
+
+    <div class="section">
+        <h2>Role in Artificial Intelligence</h2>
+        <p>Perceptrons play a crucial role in artificial intelligence as they are the foundational elements of neural networks. They inspire more sophisticated models like multi-layer perceptrons (MLPs) and deep neural networks (DNNs), which are pivotal in AI applications.</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resources Page</title>
+    <style>
+        body {
+            background-image: url("img2.jpg");
+            background-size: cover;
+        }
+        #pdfList {
+            margin-bottom: 40px;
+        }
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .video-item {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        iframe {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resources</h1>
+    <h2>PDF Resources</h2>
+    <ul id="pdfList"></ul>
+
+    <!-- Video Resources -->
+    <h2>Video Resources</h2>
+    <div class="video-container">
+        <!-- Video 1 -->
+        <div class="video-item">
+            <h1> Introduction</h1>
+            <a href="https://drive.google.com/file/d/1-aND1LNlbPHIxV_U6Z0pe-yTrOR0ieQS/view?usp=sharing" target="_blank">Topic1</a>
+            <iframe src="https://drive.google.com/file/d/1-aND1LNlbPHIxV_U6Z0pe-yTrOR0ieQS/preview" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="video-item">
+            <h1> what is neural networks</h1>
+            <a href="https://drive.google.com/file/d/19SGwX82PFuaM--VYr3sBie4ZEkXn7UPK/view?usp=sharing" target="_blank">Topic2</a>
+            <iframe src="https://drive.google.com/file/d/19SGwX82PFuaM--VYr3sBie4ZEkXn7UPK/preview" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="video-item">
+            <h1> Activation functions</h1>
+            <a href="https://drive.google.com/file/d/1iBDiMxS6cqA0KSVSR7LmYGwMwdJ1MEWT/view?usp=sharing" target="_blank">Topic3</a>
+            <iframe src="https://drive.google.com/file/d/1iBDiMxS6cqA0KSVSR7LmYGwMwdJ1MEWT/preview" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <!-- Video 4 -->
+        <div class="video-item">
+            <h1>Arificial neural networks</h1>
+            <a href="https://drive.google.com/file/d/1oImj6WW7HxX6YN-SVCPmEpwlZT-vMbXT/view?usp=sharing" target="_blank">Topic4</a>
+            <iframe src="https://drive.google.com/file/d/1oImj6WW7HxX6YN-SVCPmEpwlZT-vMbXT/preview" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Example data for topics and PDFs
+        const resources = [
+            { name: "Topic 1", pdfName: "topic1.pdf" },
+            { name: "Topic 2", pdfName: "topic2.pdf" },
+            { name: "Topic 3", pdfName: "topic3.pdf" },
+            { name: "Topic 4", pdfName: "topic4.pdf" },
+            { name: "Topic 5", pdfName: "topic5.pdf" },
+            // Add more resources here
+        ];
+
+        // Function to create PDF list items
+        function createPdfListItems() {
+            const list = document.getElementById('pdfList');
+            // Clear existing items if any
+            list.innerHTML = '';
+
+            resources.forEach(resource => {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = `./pdfs/${resource.pdfName}`; // Path to your PDFs
+                link.download = resource.pdfName; // This attribute helps in downloading the file
+                link.textContent = resource.pdfName;
+                listItem.appendChild(link);
+                list.appendChild(listItem);
+            });
+        }
+
+        // Call the function to populate the list
+        createPdfListItems();
+    </script>
+</body>
+</html>
