@@ -3,91 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Learning Tutorial</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Comprehensive tutorials and tools for AI, Machine Learning, and Deep Learning.">
+    <title>AI & ML Tutorials</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        body { scroll-behavior: smooth; font-family: 'Roboto', sans-serif; }
+        .code-toggle { cursor: pointer; }
+        .code-content { display: none; }
+        .code-content.active { display: block; }
+        .dark-mode { background-color: #1a202c; color: #e2e8f0; }
+        .dark-mode .bg-white { background-color: #2d3748; }
+        .dark-mode .bg-gray-100 { background-color: #4a5568; }
+        .clickable-image { cursor: pointer; border-radius: 6px; border: 1px solid #ccc; width: 100%; height: auto; }
+        .hamburger-menu { display: none; }
+        .hamburger-menu.active { display: block; }
+        @media (max-width: 768px) {
+            .hamburger-menu.active { display: flex; flex-direction: column; }
+        }
+    </style>
 </head>
-<style>
-    body {
-        background-image: url("bg.jpg");
-        background-size: cover;
-    }
-</style>
-<body>
-
-    <header>
-        <nav>
-            <div class="menu-icon" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
+<body class="bg-gray-100 transition-colors duration-300">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 text-white fixed w-full z-10 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold">AI & ML Tutorials</a>
+            <div class="flex items-center space-x-4">
+                <button id="hamburger" class="text-2xl">☰</button>
+                <button id="theme-toggle" class="px-2 py-1 bg-blue-500 rounded hover:bg-blue-600">Toggle Dark Mode</button>
             </div>
-            <div id="menu-content" class="menu-content">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="resourses.html">Resources</a></li>
-                    <li><a href="neural_networks.html">Neural Networks</a></li>
-                    <li><a href="machine_learning.html">Machine Learning</a></li>
-                    <li><a href="reinforcement_learning.html">Reinforcement Learning</a></li>
-                    <li><a href="activations.html">Activation functions</a></li>
-                    <li><a href="application.html">Applications</a></li>
-                    <li><a href="perceptron.html">Perceptron</a></li>
-                    <li><a href="quiz.html">Quiz</a></li>
-                    <li><a href ="code.html">code</a></li>
-                    <li><a href="contactus.php">contact us</a></li>
-                    <li><a href="feedback.php">Feedback</a></li>
-                </ul>
+        </div>
+        <div id="hamburger-menu" class="hamburger-menu hidden bg-gray-800 text-white px-4 py-2">
+            <a href="index.html" class="block py-1 hover:text-blue-400">Home</a>
+            <a href="machine_learning.html" class="block py-1 hover:text-blue-400">Machine Learning</a>
+            <a href="neural_networks.html" class="block py-1 hover:text-blue-400">Deep Learning</a>
+            <a href="resourses.html" class="block py-1 hover:text-blue-400">Resources</a>
+            <a href="reinforcement_learning.html" class="block py-1 hover:text-blue-400">Reinforcement Learning</a>
+            <a href="activations.html" class="block py-1 hover:text-blue-400">Activation Functions</a>
+            <a href="application.html" class="block py-1 hover:text-blue-400">Applications</a>
+            <a href="perceptron.html" class="block py-1 hover:text-blue-400">Perceptron</a>
+            <a href="quiz.html" class="block py-1 hover:text-blue-400">Quiz</a>
+            <a href="code.html" class="block py-1 hover:text-blue-400">Code</a>
+            <a href="summarization.html" class="block py-1 hover:text-blue-400">Text Summarization</a>
+            <a href="chatbot.html" class="block py-1 hover:text-blue-400">AI Chat Bot</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Learn AI, Machine Learning & Deep Learning</h1>
+            <p class="text-lg md:text-xl">Explore comprehensive tutorials, interactive quizzes, and live deployed AI applications.</p>
+        </div>
+    </section>
+
+    <!-- AI Tools -->
+    <section id="ai-tools" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6">AI Powered Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-4">Coherent Text Generation</h3>
+                    <p>Semantic text generation and summarization built with Cohere AI.</p>
+                    <iframe src="https://coherent-text-generation-5.onrender.com" class="w-full h-80 mt-4 rounded" title="Coherent Text Generation"></iframe>
+                    <a href="https://coherent-text-generation-5.onrender.com" target="_blank" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Open Full Tool</a>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-4">PDF Summarization</h3>
+                    <p>Click the image below to open the PDF summarization tool.</p>
+                    <a href="https://textsummarization-vmp5k4ewu6qplczyorjw79.streamlit.app/" target="_blank">
+                        <img src="text_summarization.jpeg" alt="PDF Summarization Preview" class="clickable-image mt-4">
+                    </a>
+                    <a href="https://textsummarization-vmp5k4ewu6qplczyorjw79.streamlit.app/" target="_blank" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Open Full Tool</a>
+                </div>
             </div>
-        </nav>
-    </header>
-    <main>
-        <h1>Welcome to the Deep Learning Tutorial</h1>
-        <p>This website contains comprehensive information about deep learning.</p>
+        </div>
+    </section>
 
-        <h2>Featured Topics</h2>
-        <p>Deep learning is a subset of machine learning and artificial intelligence (AI) that involves the use of neural networks to analyze and interpret large amounts of data. It is inspired by the structure and function of the human brain, where complex tasks are performed through the interaction of billions of interconnected neurons.
+    <!-- ML/DL Overview -->
+    <section id="ml-dl-overview" class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6">Machine Learning & Deep Learning Algorithms</h2>
+            <p class="mb-4">Understand popular algorithms and their applications:</p>
+            <ul class="list-disc pl-6 mb-6">
+                <li><strong>Supervised Learning</strong>: Linear Regression, Logistic Regression, Decision Trees, Random Forests, SVM</li>
+                <li><strong>Unsupervised Learning</strong>: K-Means, Hierarchical Clustering, PCA</li>
+                <li><strong>Deep Learning</strong>: ANN, CNN, RNN, LSTM, GAN</li>
+                <li><strong>Reinforcement Learning</strong>: Q-Learning, Policy Gradient Methods</li>
+            </ul>
+        </div>
+    </section>
 
-           <h3> Key Features of Deep Learning</h3>
-           
-           1. .Neural Networks.: Deep learning models are based on artificial neural networks, which are composed of multiple layers of interconnected nodes or "neurons." These layers include an input layer, one or more hidden layers, and an output layer.
-           
-           2. .Multiple Layers.: The term "deep" refers to the use of multiple layers in these networks, typically ranging from three to several hundred or thousands. This allows for complex data processing and pattern recognition.
-           
-           3. .Data Processing.: Deep learning models can process various types of data, including images, text, audio, and more. They are capable of recognizing patterns, classifying data, and making predictions based on the input data.
-           
-           4. .Learning from Data.: Unlike traditional machine learning, which often requires hand-crafted features, deep learning models can automatically learn relevant features from raw data. This process is known as feature learning.
-           
-           5. .Training Process.: Deep learning models are trained using large datasets, which can be labeled or unlabeled, depending on the type of learning (supervised, unsupervised, or semi-supervised).
-           
-           <h2>Applications of Deep Learning</h2>
-           
-           Deep learning has numerous applications across various fields:
-           
-           - .Computer Vision.: Image recognition, object detection, facial recognition, and self-driving cars.
-           - .Natural Language Processing (NLP).: Language translation, text generation, sentiment analysis, and speech recognition
-           - .Speech Recognition.: Transcribing spoken words into text
-           - .Medical Diagnosis.: Analyzing medical images to diagnose diseases.
-           - .Generative Models.: Creating new content such as images, music, or text
-           
-           <h2>Advantages of Deep Learning</h2>
-           
-           1. .High Accuracy.: Deep learning models can achieve state-of-the-art performance in various tasks, often surpassing human capabilities
-           2. .Automated Feature Engineering.: The ability to automatically discover relevant features from data eliminates the need for manual feature engineering.
-           3. .Scalability.: Deep learning models can handle large and complex datasets, making them suitable for big data applications.
-           
-           <h2>> Challenges in Deep Learning</h2>
-           
-           1. .Data Requirements.: Deep learning requires large amounts of data to train effectively
-           2. .Computational Resources.: Training deep learning models is computationally intensive and often requires specialized hardware like GPUs or TPUs.
-           3. .Interpretability.: Deep learning models can be difficult to interpret due to their complex structure.
-           
-           In summary, deep learning is a powerful tool in the field of AI, enabling machines to learn from data in ways that mimic human cognition. Its applications are diverse and continue to expand as technology advances.
-                       
-        </p>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Deep Learning Tutorial</p>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 AI & ML Tutorials. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script src="script2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script>
+        // Hamburger menu toggle
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('hamburger-menu').classList.toggle('active');
+        });
+
+        // Dark mode toggle
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            document.getElementById('theme-toggle').textContent = document.body.classList.contains('dark-mode') ? 'Toggle Light Mode' : 'Toggle Dark Mode';
+        });
+    </script>
 </body>
 </html>
